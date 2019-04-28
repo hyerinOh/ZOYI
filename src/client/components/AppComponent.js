@@ -5,10 +5,9 @@ import MainPage from './MainPage';
 class AppComponent extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
   render() {
-    console.log('props',this.props);
+    console.log('Redux props',this.props);
     return(
       <div>
         <MainPage {...this.props}/>

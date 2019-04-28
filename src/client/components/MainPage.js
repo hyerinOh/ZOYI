@@ -9,11 +9,9 @@ export default class MainPage extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="mainWrapper">
         <h1>Countries of the World</h1>
-        <h3>Search for a country</h3>
         <img
           className="backgroundImg"
           src={background}

@@ -25,8 +25,8 @@ h3{
 }
 .backgroundImg{
   text-align: center;
-  width: 80%;
-  height: 80vh;
+  width: 60%;
+  height: 60vh;
 }
 .searchBar{
   width: 400px;
@@ -48,12 +48,54 @@ h3{
 .countryLists{
   margin: auto;
   display: block;
-  /* margin-top: 100px; */
   width: 80%;
   border: solid 1px #cccccc;
   text-align: left;
   margin-bottom: 20px;
 }
-.countryListsWrapper{
+.listWrapper{
   margin-top: 150px;
+}
+.feildWrapper{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  border: solid 1px salmon;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.countryDataWrapper{
+  display: flex;
+  justify-content: space-around;
+
+}
+.nameWrapper{
+  list-style: none;
+  width: 220px;
+  text-align: left;
+  border: solid 1px red;
+}
+.codeWrapper{
+  list-style: none;
+  width: 220px;
+  text-align: left;
+  border: solid 1px orange;
+}
+.callingCodeWrapper{
+  list-style: none;
+  width: 220px;
+  text-align: left;
+  border: solid 1px yellow;
+}
+.capitalWrapper{
+  list-style: none;
+  width: 220px;
+  text-align: left;
+  border: solid 1px blue;
+}
+.regionWrapper{
+  list-style: none;
+  width: 220px;
+  text-align: left;
+  border: solid 1px purple;
 }
