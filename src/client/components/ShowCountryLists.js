@@ -6,19 +6,19 @@ export default class ShowCountryLists extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      sortingTypeOfName: "asc",
-      sortingTypeOfCode: "asc",
-      sortingTypeOfCallingCode: "asc",
-      sortingTypeOfCapital: "asc",
-      sortingTypeOfRegion: "asc",
-      countryLists: [],
-      countryName: [],
-      countryCode: [],
-      countryCallingCode: [],
-      countryCapital: [],
-      countryRegion: []
-    };
+    // this.state = {
+    //   sortingTypeOfName: "asc",
+    //   sortingTypeOfCode: "asc",
+    //   sortingTypeOfCallingCode: "asc",
+    //   sortingTypeOfCapital: "asc",
+    //   sortingTypeOfRegion: "asc",
+    //   countryLists: [],
+    //   countryName: [],
+    //   countryCode: [],
+    //   countryCallingCode: [],
+    //   countryCapital: [],
+    //   countryRegion: []
+    // };
   }
 
   clickDesc = sorting => {
@@ -49,6 +49,11 @@ export default class ShowCountryLists extends Component {
     }
   };
 
+  clickDelete = country => {
+    console.log(country);
+    this.props.deleteList(country, this.props.countryLists);
+  };
+
   render() {
     console.log("props", this.props);
     const {
@@ -60,12 +65,7 @@ export default class ShowCountryLists extends Component {
     } = this.props;
     return (
       <div>
-        {/* <div className="sortingBtnWrapper">
-            <button onClick={this.clickAsc}>오름차순</button>
-            <button onClick={this.clickDesc}>내림차순</button>
-          </div> */}
-
-        <div className="feildWrapper">
+        <div className="fieldWrapper">
           <div>
             <p className="nameSorting">name</p>
             <button
@@ -141,109 +141,15 @@ export default class ShowCountryLists extends Component {
               내림차순
             </button>
           </div>
+          <button type="button">ADD</button>
         </div>
-
         <div className="countryDataWrapper">
-          {/* <ul className="nameWrapper">
-          {
-            countryName.length && this.state.sortingTypeOfName === 'asc'
-              ? countryName.map((country) => {
-                return (
-                  <li>
-                    {country}
-                  </li>
-                )
-              })
-              : this.state.countryName.map((country) => {
-                return (
-                  <li>
-                    {country}
-                  </li>
-                )
-              })
-          }
-          </ul>
-          <ul className="codeWrapper">
-            {
-              countryCode.length && this.state.sortingTypeOfCode === 'asc'
-                ? countryCode.map((code) => {
-                  return(
-                    <li>
-                      {code}
-                    </li>
-                  )
-                })
-                : this.state.countryCode.map((code) => {
-                  return (
-                    <li>
-                      {code}
-                    </li>
-                  )
-                })
-            }
-          </ul>
-          <ul className="callingCodeWrapper">
-          {
-            countryCallingCode.length && this.state.sortingTypeOfCallingCode === 'asc'
-              ? countryCallingCode.map((callingcode) => {
-                return (
-                  <li>
-                    {callingcode}
-                  </li>
-                )
-              })
-              : this.state.countryCallingCode.map((callingcode) => {
-               
-                return (
-                  <li>
-                    {callingcode}
-                  </li>
-                )
-              })
-          }
-          </ul>
-          <ul className="capitalWrapper">
-            {
-              countryCapital.length && this.state.sortingTypeOfCapital === 'asc'
-                ? countryCapital.map((capital) => {
-                  return(
-                    <li>
-                      {capital}
-                    </li>
-                  )
-                })
-                : this.state.countryCapital.map((capital) => {
-                  return (
-                    <li>
-                      {capital}
-                    </li>
-                  )
-                })
-            }
-          </ul>
-          <ul className="regionWrapper">
-            {
-              countryRegion.length && this.state.sortingTypeOfRegion === 'asc'
-                ? countryRegion.map((region) => {
-                  return(
-                    <li>
-                      {region}
-                    </li>
-                  )
-                })
-                : this.state.countryRegion.map((region) => {
-                  return (
-                    <li>
-                      {region}
-                    </li>
-                    
-                  )
-                })
-            }
-          </ul> */}
-
-          {this.props.countryLists.length > 0 &&
-          this.props.countryNameSorting === "asc"
+          {(this.props.countryLists.length > 0 &&
+            this.props.countryNameSorting === "asc") ||
+          this.props.countryCodeSorting === "asc" ||
+          this.props.countryCallingCodeSorting === "asc" ||
+          this.props.countryCapitalSorting === "asc" ||
+          this.props.countryRegionSorting === "asc"
             ? this.props.countryLists.map(country => {
                 return (
                   <div>
@@ -254,6 +160,12 @@ export default class ShowCountryLists extends Component {
                         <p>callingCodes : {country.callingCodes[0]}</p>
                         <p>capital : {country.capital}</p>
                         <p>region : {country.region}</p>
+                        <button
+                          type="button"
+                          onClick={this.clickDelete.bind(this, country.name)}
+                        >
+                          DELETE
+                        </button>
                       </li>
                     </ul>
                   </div>
@@ -268,6 +180,7 @@ export default class ShowCountryLists extends Component {
                       <p>callingCodes : {country.callingCodes[0]}</p>
                       <p>capital : {country.capital}</p>
                       <p>region : {country.region}</p>
+                      <button type="button">DELETE</button>
                     </li>
                   </ul>
                 );

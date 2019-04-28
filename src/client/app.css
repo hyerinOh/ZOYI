@@ -46,27 +46,27 @@ h3 {
 }
 .countryLists {
   margin: auto;
-  display: block;
-  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  width: 90%;
   border: solid 1px #cccccc;
+  padding: 20px;
   text-align: left;
   margin-bottom: 20px;
 }
 .listWrapper {
   margin-top: 150px;
 }
-.feildWrapper {
+.fieldWrapper {
+  font-size: 20px;
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
-  border: solid 1px salmon;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin: 20px;
+  width: 90%;
+  padding: 20px;
 }
-.countryDataWrapper {
-  /* display: flex;
-  justify-content: space-around; */
-}
+
 .nameWrapper {
   list-style: none;
   width: 220px;

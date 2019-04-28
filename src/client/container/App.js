@@ -6,7 +6,8 @@ import {
   searchCountryAction,
   setDescending,
   getCountryList,
-  setAscending
+  setAscending,
+  deleteList
 } from "../actions/index";
 
 class App extends Component {
@@ -20,6 +21,9 @@ const mapStateToProps = state => {
     searchValue: state.searchValue,
     countryNameSorting: state.countryNameSorting,
     countryCodeSorting: state.countryCodeSorting,
+    countryCallingCodeSorting: state.countryCallingCodeSorting,
+    countryCapitalSorting: state.countryCapitalSorting,
+    countryRegionSorting: state.countryRegionSorting,
     countryLists: state.countryLists
   };
 };
@@ -35,14 +39,11 @@ const mapDispatchToProps = dispatch => {
     setAscending: (fields, countryLists) => {
       dispatch(setAscending(fields, countryLists));
     },
-    // checkCountryNameSortingType: (type) => {
-    //   dispatch(countryNameSorting(type));
-    // },
-    // checkCountryCodeSortingType: (type) => {
-    //   dispatch(countryCodeSorting(type));
-    // },
     saveCountryList: countryLists => {
       dispatch(getCountryList(countryLists));
+    },
+    deleteList: (country, countryLists) => {
+      dispatch(deleteList(country, countryLists));
     }
   };
 };

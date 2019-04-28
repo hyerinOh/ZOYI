@@ -3,20 +3,13 @@ export const initialState = {
   countryNameSorting: "asc",
   countryCodeSorting: "asc",
   countryCallingCodeSorting: "asc",
-  countryCapital: "asc",
-  countryRegion: "asc",
+  countryCapitalSorting: "asc",
+  countryRegionSorting: "asc",
   countryLists: []
 };
 
 export default function Reducer(state = initialState, action) {
-  const {
-    type,
-    fields,
-    searchValue,
-    countryNameSorting,
-    countryCodeSorting,
-    countryLists
-  } = action;
+  const { type, fields, searchValue, countryLists, country } = action;
 
   switch (type) {
     case "SEARCH_COUNTRY":
@@ -44,7 +37,7 @@ export default function Reducer(state = initialState, action) {
                 ? 1
                 : 0;
             }),
-            countryNameSorting: "asc"
+            countryCodeSorting: "asc"
           };
         case "COUNTRYCALLINGCODE":
           return {
@@ -56,7 +49,7 @@ export default function Reducer(state = initialState, action) {
                 ? 1
                 : 0;
             }),
-            countryNameSorting: "asc"
+            countryCallingCodeSorting: "asc"
           };
         case "COUNTRYCAPITAL":
           return {
@@ -64,7 +57,7 @@ export default function Reducer(state = initialState, action) {
             countryLists: countryLists.slice().sort(function(a, b) {
               return a.capital < b.capital ? -1 : a.capital > b.capital ? 1 : 0;
             }),
-            countryNameSorting: "asc"
+            countryCapitalSorting: "asc"
           };
         case "COUNTRYREGION":
           return {
@@ -72,7 +65,7 @@ export default function Reducer(state = initialState, action) {
             countryLists: countryLists.slice().sort(function(a, b) {
               return a.region < b.region ? -1 : a.region > b.region ? 1 : 0;
             }),
-            countryNameSorting: "asc"
+            countryRegionSorting: "asc"
           };
       }
     case "DESCENDING":
@@ -95,7 +88,7 @@ export default function Reducer(state = initialState, action) {
                 ? 1
                 : 0;
             }),
-            countryNameSorting: "dsc"
+            countryCodeSorting: "dsc"
           };
         case "COUNTRYCALLINGCODE":
           return {
@@ -107,7 +100,7 @@ export default function Reducer(state = initialState, action) {
                 ? 1
                 : 0;
             }),
-            countryNameSorting: "dsc"
+            countryCallingCodeSorting: "dsc"
           };
         case "COUNTRYCAPITAL":
           return {
@@ -115,7 +108,7 @@ export default function Reducer(state = initialState, action) {
             countryLists: countryLists.slice().sort(function(a, b) {
               return a.capital > b.capital ? -1 : a.capital < b.capital ? 1 : 0;
             }),
-            countryNameSorting: "dsc"
+            countryCapitalSorting: "dsc"
           };
         case "COUNTRYREGION":
           return {
@@ -123,7 +116,7 @@ export default function Reducer(state = initialState, action) {
             countryLists: countryLists.slice().sort(function(a, b) {
               return a.region > b.region ? -1 : a.region < b.region ? 1 : 0;
             }),
-            countryNameSorting: "dsc"
+            countryRegionSorting: "dsc"
           };
       }
     case "COUNTRYLIST":
@@ -131,6 +124,17 @@ export default function Reducer(state = initialState, action) {
         ...state,
         countryLists: countryLists
       };
+    case "DELETELIST":
+      const copiedLists = [...state.countryLists];
+      const idx = copiedLists.findIndex(list => {
+        return list.name === country;
+      });
+      copiedLists.splice(idx, 1);
+      return {
+        ...state,
+        countryLists: copiedLists
+      };
+
     default:
       return state;
   }

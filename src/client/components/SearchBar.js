@@ -7,25 +7,10 @@ import axios from "axios";
 export default class SearchBar extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      countryLists: [],
-      countryName: [],
-      countryCode: [],
-      countryCallingCode: [],
-      countryCapital: [],
-      countryRegion: []
-    };
   }
 
   handleChange = ev => {
     const { searchCountry } = this.props;
-    const nameList = [];
-    const codeList = [];
-    const callingCodelist = [];
-    const capitalList = [];
-    const regionList = [];
-
     searchCountry(ev.target.value);
 
     if (ev.target.value.length > 0) {
@@ -38,23 +23,6 @@ export default class SearchBar extends Component {
         .then(response => {
           console.log("response", response.data);
           this.props.saveCountryList(response.data);
-          // response.data.map((eachCountry) => {
-          //   // nameList.push(eachCountry.name);
-          //   // codeList.push(eachCountry.alpha2Code);
-          //   // callingCodelist.push(eachCountry.callingCodes[0]);
-          //   // capitalList.push(eachCountry.capital);
-          //   // regionList.push(eachCountry.region);
-          // })
-          // this.setState({
-          //   countryName: nameList,
-          //   countryCode: codeList,
-          //   countryCallingCode: callingCodelist,
-          //   countryCapital: capitalList,
-          //   countryRegion: regionList
-          // })
-          this.setState({
-            countryLists: response.data
-          });
         })
         .catch(error => {
           console.log(error);
@@ -65,9 +33,7 @@ export default class SearchBar extends Component {
           "https://restcountries.eu/rest/v2/all?fields=alpha2Code;capital;name;region;callingCodes"
         )
         .then(response => {
-          this.setState({
-            countryLists: response.data
-          });
+          this.props.saveCountryList(response.data);
         })
         .catch(error => {
           console.log(error);
@@ -75,9 +41,9 @@ export default class SearchBar extends Component {
     }
   };
 
-  handleSubmit = ev => {
-    ev.preventDefault();
-  };
+  // handleSubmit = ev => {
+  //   ev.preventDefault();
+  // };
 
   render() {
     return (
@@ -89,7 +55,7 @@ export default class SearchBar extends Component {
           value={this.props.searchValue}
           onChange={this.handleChange}
         />
-        <Button type="button">검색</Button>
+        {/* <Button type="button">검색</Button> */}
         <div className="listWrapper">
           <ShowCountryLists {...this.props} />
         </div>

@@ -23,23 +23,16 @@ export const setDescending = (fields, countryLists) => {
   };
 };
 
-// export function countryNameSorting(sortingType) {
-//   return {
-//     type: types.COUNTRYNAMESORTING,
-//     countryNameSorting: sortingType
-//   };
-// }
-
-// export function countryCodeSorting(sortingType) {
-//   return {
-//     type: types.COUNTRYCODESORTING,
-//     countryCodeSorting: sortingType
-//   }
-// }
-
-export function getCountryList(countryLists) {
+export const getCountryList = countryLists => {
   return {
     type: types.COUNTRYLIST,
     countryLists: countryLists
   };
-}
+};
+
+export const deleteList = country => {
+  return {
+    type: types.DELETELIST,
+    country: country
+  };
+};
