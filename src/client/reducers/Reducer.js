@@ -1,104 +1,136 @@
 export const initialState = {
-  searchValue: '',
-  countryNameSorting:'asc',
-  countryCodeSorting: 'asc',
-  countryCallingCodeSorting: 'asc',
-  countryCapital: 'asc',
-  countryRegion: 'asc',
+  searchValue: "",
+  countryNameSorting: "asc",
+  countryCodeSorting: "asc",
+  countryCallingCodeSorting: "asc",
+  countryCapital: "asc",
+  countryRegion: "asc",
   countryLists: []
 };
 
 export default function Reducer(state = initialState, action) {
-  const { type, fields, searchValue, countryNameSorting, countryCodeSorting,countryLists } = action;
+  const {
+    type,
+    fields,
+    searchValue,
+    countryNameSorting,
+    countryCodeSorting,
+    countryLists
+  } = action;
 
-  switch(type) {
-    case 'SEARCH_COUNTRY':
+  switch (type) {
+    case "SEARCH_COUNTRY":
       return {
         ...state,
         searchValue: searchValue
       };
-    case 'ASCENDING':
-      switch(fields) {
-        case 'COUNTRYNAME':
-          return {
-            ...state,
-            countryNameSorting: 'asc'
-          };
-        case 'COUNTRYCODE':
-          return {
-            ...state,
-            countryCodeSorting: 'asc'
-          };
-        case 'COUNTRYCALLINGCODE':
-          return {
-            ...state,
-            countryCallingCodeSorting: 'asc'
-          };
-        case 'COUNTRYCAPITAL':
-          return {
-            ...state,
-            countryCapital: 'asc'
-          };
-        case 'COUNTRYREGION':
-          return {
-            ...state,
-            countryRegion: 'asc'
-          };
-      };
-    case 'DESCENDING':
+    case "ASCENDING":
       switch (fields) {
-        case 'COUNTRYNAME':
+        case "COUNTRYNAME":
           return {
             ...state,
-            countryLists: [
-              countryLists.slice().sort(function(a,b) {
-                return a.name > b.name ? -1 : a.name < b.name ? 1 : 0;
-              })
-            ]
-            ,
-            countryNameSorting: 'dsc'
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+            }),
+            countryNameSorting: "asc"
           };
-        case 'COUNTRYCODE':
-          [...state.countryLists];
-          state.countryLists.sort((a,b) => {
-            return b[alpha2Code] - a[alpha2Code]; 
-          })
+        case "COUNTRYCODE":
           return {
             ...state,
-            countryLists: state.countryLists,
-            countryCodeSorting: 'dsc'
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.alpha2Code < b.alpha2Code
+                ? -1
+                : a.alpha2Code > b.alpha2Code
+                ? 1
+                : 0;
+            }),
+            countryNameSorting: "asc"
           };
-        case 'COUNTRYCALLINGCODE':
+        case "COUNTRYCALLINGCODE":
           return {
             ...state,
-            countryCallingCodeSorting: 'dsc'
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.callingCodes[0] < b.callingCodes[0]
+                ? -1
+                : a.callingCodes[0] > b.callingCodes[0]
+                ? 1
+                : 0;
+            }),
+            countryNameSorting: "asc"
           };
-        case 'COUNTRYCAPITAL':
+        case "COUNTRYCAPITAL":
           return {
             ...state,
-            countryCapital: 'dsc'
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.capital < b.capital ? -1 : a.capital > b.capital ? 1 : 0;
+            }),
+            countryNameSorting: "asc"
           };
-        case 'COUNTRYREGION':
+        case "COUNTRYREGION":
           return {
             ...state,
-            countryRegion: 'dsc'
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.region < b.region ? -1 : a.region > b.region ? 1 : 0;
+            }),
+            countryNameSorting: "asc"
           };
       }
-    // case 'COUNTRYNAMESORTING':
-    //   return {
-    //     ...state,
-    //     countryNameSorting: countryNameSorting
-    //   };
-    // case 'COUNTRYCODESORTING':
-    //   return {
-    //     ...state,
-    //     countryCodeSorting: countryCodeSorting
-    //   };
-    case 'COUNTRYLIST':
+    case "DESCENDING":
+      switch (fields) {
+        case "COUNTRYNAME":
+          return {
+            ...state,
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.name > b.name ? -1 : a.name < b.name ? 1 : 0;
+            }),
+            countryNameSorting: "dsc"
+          };
+        case "COUNTRYCODE":
+          return {
+            ...state,
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.alpha2Code > b.alpha2Code
+                ? -1
+                : a.alpha2Code < b.alpha2Code
+                ? 1
+                : 0;
+            }),
+            countryNameSorting: "dsc"
+          };
+        case "COUNTRYCALLINGCODE":
+          return {
+            ...state,
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.callingCodes[0] > b.callingCodes[0]
+                ? -1
+                : a.callingCodes[0] < b.callingCodes[0]
+                ? 1
+                : 0;
+            }),
+            countryNameSorting: "dsc"
+          };
+        case "COUNTRYCAPITAL":
+          return {
+            ...state,
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.capital > b.capital ? -1 : a.capital < b.capital ? 1 : 0;
+            }),
+            countryNameSorting: "dsc"
+          };
+        case "COUNTRYREGION":
+          return {
+            ...state,
+            countryLists: countryLists.slice().sort(function(a, b) {
+              return a.region > b.region ? -1 : a.region < b.region ? 1 : 0;
+            }),
+            countryNameSorting: "dsc"
+          };
+      }
+    case "COUNTRYLIST":
       return {
         ...state,
         countryLists: countryLists
-      }
+      };
     default:
       return state;
   }

@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import '../app.css';
-import MainPage from './MainPage';
+import React, { Component } from "react";
+import "../app.css";
+import MainPage from "./MainPage";
 
 class AppComponent extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    console.log('Redux props',this.props);
-    return(
+    console.log("Redux props", this.props);
+    return (
       <div>
-        <MainPage {...this.props}/>
+        <MainPage {...this.props} />
       </div>
     );
   }
 }
- 
+
 export default AppComponent;
