@@ -1,24 +1,11 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import ReduxForm from "./ReduxForm";
 import "../app.css";
 
 export default class ShowCountryLists extends Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   sortingTypeOfName: "asc",
-    //   sortingTypeOfCode: "asc",
-    //   sortingTypeOfCallingCode: "asc",
-    //   sortingTypeOfCapital: "asc",
-    //   sortingTypeOfRegion: "asc",
-    //   countryLists: [],
-    //   countryName: [],
-    //   countryCode: [],
-    //   countryCallingCode: [],
-    //   countryCapital: [],
-    //   countryRegion: []
-    // };
   }
 
   clickDesc = sorting => {
@@ -142,6 +129,7 @@ export default class ShowCountryLists extends Component {
             </button>
           </div>
           <button type="button">ADD</button>
+          {/* <ReduxForm {...this.props} /> */}
         </div>
         <div className="countryDataWrapper">
           {(this.props.countryLists.length > 0 &&

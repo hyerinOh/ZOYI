@@ -12,19 +12,20 @@ import {
 
 class App extends Component {
   render() {
+    console.log(this.props);
     return <AppComponent {...this.props} />;
   }
 }
 
 const mapStateToProps = state => {
   return {
-    searchValue: state.searchValue,
-    countryNameSorting: state.countryNameSorting,
-    countryCodeSorting: state.countryCodeSorting,
-    countryCallingCodeSorting: state.countryCallingCodeSorting,
-    countryCapitalSorting: state.countryCapitalSorting,
-    countryRegionSorting: state.countryRegionSorting,
-    countryLists: state.countryLists
+    searchValue: state.Reducer.searchValue,
+    countryNameSorting: state.Reducer.countryNameSorting,
+    countryCodeSorting: state.Reducer.countryCodeSorting,
+    countryCallingCodeSorting: state.Reducer.countryCallingCodeSorting,
+    countryCapitalSorting: state.Reducer.countryCapitalSorting,
+    countryRegionSorting: state.Reducer.countryRegionSorting,
+    countryLists: state.Reducer.countryLists
   };
 };
 
