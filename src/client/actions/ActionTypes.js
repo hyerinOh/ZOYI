@@ -3,6 +3,7 @@ export const ASCENDING = "ASCENDING";
 export const DESCENDING = "DESCENDING";
 export const COUNTRYLIST = "COUNTRYLIST";
 export const DELETELIST = "DELETELIST";
+export const ADDLIST = "ADDLIST";
 
 export const fields = {
   COUNTRYNAME: "COUNTRYNAME",

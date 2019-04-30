@@ -2,50 +2,56 @@ import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 
 class AddListForm extends Component {
+  submit = value => {
+    console.log("form Value", value);
+    console.log("add", this.props);
+    this.props.addList(value, this.props.countryLists);
+  };
   render() {
+    console.log("form", this.props);
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit}>
+      <form className="formWrapper" onSubmit={handleSubmit(this.submit)}>
         <div>
-          <label htmlFor="countryName">Country Name</label>
+          <label htmlFor="name">Country Name</label>
           <Field
-            name="countryName"
+            name="name"
             type="text"
             placeholder="Write Country Name"
             component="input"
           />
         </div>
         <div>
-          <label htmlFor="countryCode">Country Code</label>
+          <label htmlFor="alpha2Code">Country Code</label>
           <Field
-            name="countryCode"
+            name="alpha2Code"
             type="text"
             placeholder="Write Country Code"
             component="input"
           />
         </div>
         <div>
-          <label htmlFor="countryCallingCode">Country Calling Code</label>
+          <label htmlFor="callingCodes">Country Calling Code</label>
           <Field
-            name="countryCallingCode"
+            name="callingCodes"
             type="text"
             placeholder="Write Country Calling Code"
             component="input"
           />
         </div>
         <div>
-          <label htmlFor="Country Capital">Country Capital</label>
+          <label htmlFor="capital">Country Capital</label>
           <Field
-            name="countryCapital"
+            name="capital"
             type="text"
             placeholder="Write Country Capital"
             component="input"
           />
         </div>
         <div>
-          <label htmlFor="Country Region">Country Region</label>
+          <label htmlFor="region">Country Region</label>
           <Field
-            name="countryRegion"
+            name="region"
             type="text"
             placeholder="Write Country Region"
             component="input"

@@ -97,3 +97,6 @@ h3 {
   text-align: left;
   border: solid 1px purple;
 }
+.formWrapper {
+  display: flex;
+}

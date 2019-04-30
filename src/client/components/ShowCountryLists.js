@@ -6,6 +6,9 @@ import "../app.css";
 export default class ShowCountryLists extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      openInput: false
+    };
   }
 
   clickDesc = sorting => {
@@ -40,6 +43,18 @@ export default class ShowCountryLists extends Component {
     console.log(country);
     this.props.deleteList(country, this.props.countryLists);
   };
+
+  openInput() {
+    if (!this.state.openInput) {
+      this.setState({
+        openInput: true
+      });
+    } else {
+      this.setState({
+        openInput: false
+      });
+    }
+  }
 
   render() {
     console.log("props", this.props);
@@ -128,9 +143,18 @@ export default class ShowCountryLists extends Component {
               내림차순
             </button>
           </div>
-          <button type="button">ADD</button>
-          {/* <ReduxForm {...this.props} /> */}
+          <div>
+            <button type="button" onClick={this.openInput.bind(this)}>
+              make a list
+            </button>
+          </div>
         </div>
+        {this.state.openInput ? (
+          <div>
+            <ReduxForm {...this.props} />
+          </div>
+        ) : null}
+
         <div className="countryDataWrapper">
           {(this.props.countryLists.length > 0 &&
             this.props.countryNameSorting === "asc") ||

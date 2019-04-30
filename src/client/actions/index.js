@@ -36,3 +36,11 @@ export const deleteList = country => {
     country: country
   };
 };
+
+export const addList = (value, countryLists) => {
+  return {
+    type: types.ADDLIST,
+    value,
+    countryLists
+  };
+};

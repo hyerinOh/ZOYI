@@ -9,7 +9,7 @@ export const initialState = {
 };
 
 export default function Reducer(state = initialState, action) {
-  const { type, fields, searchValue, countryLists, country } = action;
+  const { type, fields, searchValue, countryLists, country, value } = action;
 
   switch (type) {
     case "SEARCH_COUNTRY":
@@ -135,6 +135,13 @@ export default function Reducer(state = initialState, action) {
         countryLists: copiedLists
       };
 
+    case "ADDLIST":
+      const originLists = [...state.countryLists];
+      originLists.push(value);
+      return {
+        ...state,
+        countryLists: originLists
+      };
     default:
       return state;
   }

@@ -7,7 +7,8 @@ import {
   setDescending,
   getCountryList,
   setAscending,
-  deleteList
+  deleteList,
+  addList
 } from "../actions/index";
 
 class App extends Component {
@@ -45,6 +46,9 @@ const mapDispatchToProps = dispatch => {
     },
     deleteList: (country, countryLists) => {
       dispatch(deleteList(country, countryLists));
+    },
+    addList: (values, countryLists) => {
+      dispatch(addList(values, countryLists));
     }
   };
 };
