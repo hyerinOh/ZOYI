@@ -7,43 +7,53 @@ import axios from "axios";
 export default class SearchBar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      timerID: null
+    };
   }
 
   handleChange = ev => {
     const { searchCountry } = this.props;
     searchCountry(ev.target.value);
+    console.log("pppp", this.props);
 
-    if (ev.target.value.length > 0) {
-      axios
-        .get(
-          `https://restcountries.eu/rest/v2/name/${
-            ev.target.value
-          }?fields=alpha2Code;capital;name;region;callingCodes`
-        )
-        .then(response => {
-          console.log("response", response.data);
-          this.props.saveCountryList(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    } else {
-      axios
-        .get(
-          "https://restcountries.eu/rest/v2/all?fields=alpha2Code;capital;name;region;callingCodes"
-        )
-        .then(response => {
-          this.props.saveCountryList(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    if (this.state.timerID) {
+      this.setState({
+        timerID: clearTimeout(this.state.timerID)
+      });
     }
-  };
 
-  // handleSubmit = ev => {
-  //   ev.preventDefault();
-  // };
+    this.setState({
+      timerID: setTimeout(() => {
+        if (this.props.searchValue) {
+          axios
+            .get(
+              `https://restcountries.eu/rest/v2/name/${
+                this.props.searchValue
+              }?fields=alpha2Code;capital;name;region;callingCodes`
+            )
+            .then(response => {
+              console.log("response", response.data);
+              this.props.saveCountryList(response.data);
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        } else {
+          axios
+            .get(
+              "https://restcountries.eu/rest/v2/all?fields=alpha2Code;capital;name;region;callingCodes"
+            )
+            .then(response => {
+              this.props.saveCountryList(response.data);
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
+      }, 200)
+    });
+  };
 
   render() {
     return (
