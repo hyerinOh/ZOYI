@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../app.css";
-import background from "./map.png";
+import background from "./background.png";
 import SearchBar from "./SearchBar";
 
 export default class MainPage extends Component {

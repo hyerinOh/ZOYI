@@ -45,14 +45,18 @@ export default class ShowCountryLists extends Component {
   };
 
   openInput() {
-    if (!this.state.openInput) {
-      this.setState({
-        openInput: true
-      });
+    if (!this.props.searchValue) {
+      alert("나라를 먼저 검색하세요!");
     } else {
-      this.setState({
-        openInput: false
-      });
+      if (!this.state.openInput) {
+        this.setState({
+          openInput: true
+        });
+      } else {
+        this.setState({
+          openInput: false
+        });
+      }
     }
   }
 
@@ -69,82 +73,96 @@ export default class ShowCountryLists extends Component {
       <div>
         <div className="fieldWrapper">
           <div>
-            <p className="nameSorting">name</p>
+            <p className="nameSorting">NAME</p>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYNAME")}
             >
               오름차순
             </button>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYNAME")}
             >
               내림차순
             </button>
           </div>
           <div>
-            <p className="codeSorting">alpha2Code</p>
+            <p className="codeSorting">COUNTRY CODE</p>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYCODE")}
             >
               오름차순
             </button>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYCODE")}
             >
               내림차순
             </button>
           </div>
           <div>
-            <p className="callingCodeSorting">callingCodes</p>
+            <p className="callingCodeSorting">CALLING CODES</p>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYCALLINGCODE")}
             >
               오름차순
             </button>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYCALLINGCODE")}
             >
               내림차순
             </button>
           </div>
           <div>
-            <p className="capitalSorting">capital</p>
+            <p className="capitalSorting">CAPITAL</p>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYCAPITAL")}
             >
               오름차순
             </button>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYCAPITAL")}
             >
               내림차순
             </button>
           </div>
           <div>
-            <p className="regionSorting">region</p>
+            <p className="regionSorting">REGION</p>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYREGION")}
             >
               오름차순
             </button>
             <button
               type="button"
+              className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYREGION")}
             >
               내림차순
             </button>
           </div>
           <div>
-            <button type="button" onClick={this.openInput.bind(this)}>
+            <button
+              className="makeListBtn"
+              type="button"
+              onClick={this.openInput.bind(this)}
+            >
               make a list
             </button>
           </div>
