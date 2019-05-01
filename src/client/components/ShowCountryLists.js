@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import ReduxForm from "./ReduxForm";
-import "../app.css";
+import "../assets/styles/app.css";
 
 export default class ShowCountryLists extends Component {
   constructor(props) {
@@ -79,14 +79,14 @@ export default class ShowCountryLists extends Component {
               className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYNAME")}
             >
-              오름차순
+              ASC
             </button>
             <button
               type="button"
               className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYNAME")}
             >
-              내림차순
+              DESC
             </button>
           </div>
           <div>
@@ -96,14 +96,14 @@ export default class ShowCountryLists extends Component {
               className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYCODE")}
             >
-              오름차순
+              ASC
             </button>
             <button
               type="button"
               className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYCODE")}
             >
-              내림차순
+              DESC
             </button>
           </div>
           <div>
@@ -113,14 +113,14 @@ export default class ShowCountryLists extends Component {
               className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYCALLINGCODE")}
             >
-              오름차순
+              ASC
             </button>
             <button
               type="button"
               className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYCALLINGCODE")}
             >
-              내림차순
+              DESC
             </button>
           </div>
           <div>
@@ -130,14 +130,14 @@ export default class ShowCountryLists extends Component {
               className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYCAPITAL")}
             >
-              오름차순
+              ASC
             </button>
             <button
               type="button"
               className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYCAPITAL")}
             >
-              내림차순
+              DESC
             </button>
           </div>
           <div>
@@ -147,14 +147,14 @@ export default class ShowCountryLists extends Component {
               className="sortingBtn"
               onClick={this.clickAsc.bind(this, "COUNTRYREGION")}
             >
-              오름차순
+              ASC
             </button>
             <button
               type="button"
               className="sortingBtn"
               onClick={this.clickDesc.bind(this, "COUNTRYREGION")}
             >
-              내림차순
+              DESC
             </button>
           </div>
           <div>
@@ -180,41 +180,46 @@ export default class ShowCountryLists extends Component {
           this.props.countryCallingCodeSorting === "asc" ||
           this.props.countryCapitalSorting === "asc" ||
           this.props.countryRegionSorting === "asc"
-            ? this.props.countryLists.map(country => {
-                return (
-                  <div>
+            ? this.props.countryLists
+                .slice(0, this.props.index)
+                .map(country => {
+                  return (
+                    <div>
+                      <ul>
+                        <li className="countryLists">
+                          <p>{country.name}</p>
+                          <p>{country.alpha2Code}</p>
+                          <p>{country.callingCodes[0]}</p>
+                          <p>{country.capital}</p>
+                          <p>{country.region}</p>
+                          <button
+                            type="button"
+                            className="deleteBtn"
+                            onClick={this.clickDelete.bind(this, country.name)}
+                          >
+                            DELETE
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  );
+                })
+            : this.props.countryLists
+                .slice(0, this.props.index)
+                .map(country => {
+                  return (
                     <ul>
                       <li className="countryLists">
-                        <p>name : {country.name}</p>
-                        <p>alpha2Code : {country.alpha2Code}</p>
-                        <p>callingCodes : {country.callingCodes[0]}</p>
-                        <p>capital : {country.capital}</p>
-                        <p>region : {country.region}</p>
-                        <button
-                          type="button"
-                          onClick={this.clickDelete.bind(this, country.name)}
-                        >
-                          DELETE
-                        </button>
+                        <p>{country.name}</p>
+                        <p>{country.alpha2Code}</p>
+                        <p>{country.callingCodes[0]}</p>
+                        <p>{country.capital}</p>
+                        <p>{country.region}</p>
+                        <button type="button">DELETE</button>
                       </li>
                     </ul>
-                  </div>
-                );
-              })
-            : this.props.countryLists.map(country => {
-                return (
-                  <ul>
-                    <li className="countryLists">
-                      <p>name : {country.name}</p>
-                      <p>alpha2Code : {country.alpha2Code}</p>
-                      <p>callingCodes : {country.callingCodes[0]}</p>
-                      <p>capital : {country.capital}</p>
-                      <p>region : {country.region}</p>
-                      <button type="button">DELETE</button>
-                    </li>
-                  </ul>
-                );
-              })}
+                  );
+                })}
         </div>
       </div>
     );

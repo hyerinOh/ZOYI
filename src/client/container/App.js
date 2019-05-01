@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../app.css";
+import "../assets/styles/app.css";
 import { connect } from "react-redux";
 import AppComponent from "../components/AppComponent";
 import {

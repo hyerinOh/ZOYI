@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import "../app.css";
-import background from "./background.png";
+import "../assets/styles/app.css";
+import background from "../assets/images/background.png";
 import SearchBar from "./SearchBar";
 
 export default class MainPage extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
       <div className="mainWrapper">
