@@ -3,17 +3,15 @@ import { Field, reduxForm } from "redux-form";
 
 class AddListForm extends Component {
   submit = value => {
-    console.log("form Value", value);
-    console.log("add", this.props);
     this.props.addList(value, this.props.countryLists);
   };
+
   render() {
-    console.log("form", this.props);
     const { handleSubmit } = this.props;
+
     return (
       <form className="formWrapper" onSubmit={handleSubmit(this.submit)}>
         <div className="form">
-          {/* <label htmlFor="name">Country Name</label> */}
           <Field
             name="name"
             className="formInput"
@@ -23,7 +21,6 @@ class AddListForm extends Component {
           />
         </div>
         <div className="form">
-          {/* <label htmlFor="alpha2Code">Country Code</label> */}
           <Field
             name="alpha2Code"
             className="formInput"
@@ -33,7 +30,6 @@ class AddListForm extends Component {
           />
         </div>
         <div className="form">
-          {/* <label htmlFor="callingCodes">Country Calling Code</label> */}
           <Field
             name="callingCodes"
             className="formInput"
@@ -43,7 +39,6 @@ class AddListForm extends Component {
           />
         </div>
         <div className="form">
-          {/* <label htmlFor="capital">Country Capital</label> */}
           <Field
             name="capital"
             className="formInput"
@@ -53,7 +48,6 @@ class AddListForm extends Component {
           />
         </div>
         <div className="form">
-          {/* <label htmlFor="region">Country Region</label> */}
           <Field
             name="region"
             className="formInput"

@@ -13,7 +13,6 @@ import {
 
 class App extends Component {
   render() {
-    console.log(this.props);
     return <AppComponent {...this.props} />;
   }
 }

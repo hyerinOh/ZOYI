@@ -6,6 +6,7 @@ import axios from "axios";
 export default class SearchBar extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       timerID: null,
       index: 0,
@@ -26,7 +27,7 @@ export default class SearchBar extends Component {
     const { innerHeight } = window;
     const { scrollHeight } = document.body;
     const { scrollY } = window;
-    // throttling
+
     this.setState({
       throttleCheck: setTimeout(() => {
         if (this.state.index >= this.props.countryLists.length) {
@@ -58,6 +59,7 @@ export default class SearchBar extends Component {
   getCountryLists = () => {
     if (this.props.searchValue) {
       const params = ["name", "alpha2Code", "callingcode", "capital", "region"];
+
       params.map(param => {
         axios
           .get(
@@ -66,7 +68,6 @@ export default class SearchBar extends Component {
             }?fields=alpha2Code;capital;name;region;callingCodes`
           )
           .then(response => {
-            console.log("response", response.data);
             this.props.saveCountryList(response.data);
             this.updateList();
           })
@@ -91,11 +92,10 @@ export default class SearchBar extends Component {
 
   handleChange = ev => {
     const { searchCountry } = this.props;
-    ev.preventDefault();
-    searchCountry(ev.target.value);
-    console.log("pppp", this.props);
 
-    // debouncing
+    searchCountry(ev.target.value);
+    ev.preventDefault();
+
     if (this.state.timerID) {
       this.setState({
         timerID: clearTimeout(this.state.timerID)
@@ -105,7 +105,7 @@ export default class SearchBar extends Component {
     this.setState({
       timerID: setTimeout(() => {
         this.getCountryLists();
-      }, 1000)
+      }, 500)
     });
   };
 

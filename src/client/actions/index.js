@@ -11,7 +11,7 @@ export const setAscending = (fields, countryLists) => {
   return {
     type: types.ASCENDING,
     fields,
-    countryLists: countryLists
+    countryLists
   };
 };
 
@@ -19,21 +19,21 @@ export const setDescending = (fields, countryLists) => {
   return {
     type: types.DESCENDING,
     fields,
-    countryLists: countryLists
+    countryLists
   };
 };
 
 export const getCountryList = countryLists => {
   return {
     type: types.COUNTRYLIST,
-    countryLists: countryLists
+    countryLists
   };
 };
 
 export const deleteList = country => {
   return {
     type: types.DELETELIST,
-    country: country
+    country
   };
 };
 

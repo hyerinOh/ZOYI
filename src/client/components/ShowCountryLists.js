@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import ReduxForm from "./ReduxForm";
 import "../assets/styles/app.css";
 
 export default class ShowCountryLists extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       openInput: false
     };
@@ -40,7 +40,6 @@ export default class ShowCountryLists extends Component {
   };
 
   clickDelete = country => {
-    console.log(country);
     this.props.deleteList(country, this.props.countryLists);
   };
 
@@ -61,7 +60,6 @@ export default class ShowCountryLists extends Component {
   }
 
   render() {
-    console.log("props", this.props);
     const {
       countryName,
       countryCode,
@@ -69,6 +67,7 @@ export default class ShowCountryLists extends Component {
       countryCapital,
       countryRegion
     } = this.props;
+
     return (
       <div>
         <div className="fieldWrapper">
@@ -210,20 +209,26 @@ export default class ShowCountryLists extends Component {
                 .slice(0, this.props.index)
                 .map(country => {
                   return (
-                    <ul>
-                      <li className="countryLists">
-                        <p className="nameField">{country.name}</p>
-                        <p className="codeField">{country.alpha2Code}</p>
-                        <p className="callingCodeField">
-                          {country.callingCodes[0]}
-                        </p>
-                        <p className="capitalField">{country.capital}</p>
-                        <p className="regionField">{country.region}</p>
-                        <button className="deleteBtn" type="button">
-                          DELETE
-                        </button>
-                      </li>
-                    </ul>
+                    <div>
+                      <ul>
+                        <li className="countryLists">
+                          <p className="nameField">{country.name}</p>
+                          <p className="codeField">{country.alpha2Code}</p>
+                          <p className="callingCodeField">
+                            {country.callingCodes[0]}
+                          </p>
+                          <p className="capitalField">{country.capital}</p>
+                          <p className="regionField">{country.region}</p>
+                          <button
+                            type="button"
+                            className="deleteBtn"
+                            onClick={this.clickDelete.bind(this, country.name)}
+                          >
+                            DELETE
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
                   );
                 })}
         </div>

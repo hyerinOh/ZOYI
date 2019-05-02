@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import "../assets/styles/app.css";
-import MainPage from "./MainPage";
+import SearchBar from "./SearchBar";
+import background from "../assets/images/background.png";
 
 class AppComponent extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    console.log("Redux props", this.props);
     return (
-      <div>
-        <MainPage {...this.props} />
+      <div className="mainWrapper">
+        <h1>Countries of the World</h1>
+        <img className="backgroundImg" src={background} alt="backgroundImg" />
+        <SearchBar {...this.props} />
       </div>
     );
   }
