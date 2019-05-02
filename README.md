@@ -1,5 +1,3 @@
-## ZOYI
-
 # ZOYI
 
 gif
