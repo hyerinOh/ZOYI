@@ -49,8 +49,9 @@ h3 {
   margin: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 20px;
-  width: 80%;
+  width: 82%;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -58,7 +59,8 @@ h3 {
   width: 100px;
   height: 30px;
   font-size: 15px;
-  border: none;
+  border: solid 1px #00c6f3;
+  border-radius: 4px;
   color: #00c6f3;
 }
 .deleteBtn:hover {
@@ -79,7 +81,28 @@ h3 {
   color: #181818;
 }
 .formWrapper {
+  text-align: center;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  width: 90%;
+  padding: 20px;
+  border-radius: 25px;
+  color: #181818;
+  background: #00c6f3;
+  opacity: 0.7;
+}
+.form {
+  width: 140px;
+  display: block;
+}
+.formInput {
+  text-indent: 10px;
+  font-size: 15px;
+  width: 160px;
+  height: 40px;
 }
 .sortingBtn {
   width: 60px;
@@ -108,5 +131,39 @@ h3 {
 .makeListBtn:hover {
   background: #00c6f3;
   color: #ffffff;
+  cursor: pointer;
+}
+.nameField {
+  width: 100px;
+}
+.codeField {
+  text-align: center;
+  width: 200px;
+}
+.callingCodeField {
+  text-align: center;
+  width: 100px;
+}
+.capitalField {
+  text-align: center;
+  width: 150px;
+}
+.regionField {
+  text-align: center;
+  width: 100px;
+}
+.addBtn {
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+  border: solid 1px #00c6f3;
+  border-radius: 4px;
+  color: #00c6f3;
+}
+.addBtn:hover {
+  border-radius: 4px;
+  border: none;
+  background: #dedede;
+  color: #00758f;
   cursor: pointer;
 }

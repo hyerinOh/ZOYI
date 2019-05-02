@@ -137,7 +137,7 @@ export default function Reducer(state = initialState, action) {
 
     case "ADDLIST":
       const originLists = [...state.countryLists];
-      originLists.push(value);
+      originLists.unshift(value);
       return {
         ...state,
         countryLists: originLists

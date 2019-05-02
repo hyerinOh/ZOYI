@@ -187,11 +187,13 @@ export default class ShowCountryLists extends Component {
                     <div>
                       <ul>
                         <li className="countryLists">
-                          <p>{country.name}</p>
-                          <p>{country.alpha2Code}</p>
-                          <p>{country.callingCodes[0]}</p>
-                          <p>{country.capital}</p>
-                          <p>{country.region}</p>
+                          <p className="nameField">{country.name}</p>
+                          <p className="codeField">{country.alpha2Code}</p>
+                          <p className="callingCodeField">
+                            {country.callingCodes[0]}
+                          </p>
+                          <p className="capitalField">{country.capital}</p>
+                          <p className="regionField">{country.region}</p>
                           <button
                             type="button"
                             className="deleteBtn"
@@ -210,12 +212,16 @@ export default class ShowCountryLists extends Component {
                   return (
                     <ul>
                       <li className="countryLists">
-                        <p>{country.name}</p>
-                        <p>{country.alpha2Code}</p>
-                        <p>{country.callingCodes[0]}</p>
-                        <p>{country.capital}</p>
-                        <p>{country.region}</p>
-                        <button type="button">DELETE</button>
+                        <p className="nameField">{country.name}</p>
+                        <p className="codeField">{country.alpha2Code}</p>
+                        <p className="callingCodeField">
+                          {country.callingCodes[0]}
+                        </p>
+                        <p className="capitalField">{country.capital}</p>
+                        <p className="regionField">{country.region}</p>
+                        <button className="deleteBtn" type="button">
+                          DELETE
+                        </button>
                       </li>
                     </ul>
                   );

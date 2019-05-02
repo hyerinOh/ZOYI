@@ -9,7 +9,8 @@ export default class SearchBar extends Component {
     this.state = {
       timerID: null,
       index: 0,
-      isDone: false
+      isDone: false,
+      throttleCheck: 0
     };
   }
 
@@ -25,15 +26,27 @@ export default class SearchBar extends Component {
     const { innerHeight } = window;
     const { scrollHeight } = document.body;
     const { scrollY } = window;
-
-    if (this.state.index >= this.props.countryLists.length) {
-      this.setState({
-        isDone: true
-      });
-    }
-    if (scrollHeight - innerHeight - scrollY < 100 && !this.state.isDone) {
-      this.updateList();
-    }
+    // throttling
+    this.setState({
+      throttleCheck: setTimeout(() => {
+        if (this.state.index >= this.props.countryLists.length) {
+          this.setState({
+            isDone: true
+          });
+        }
+        if (
+          scrollHeight - (innerHeight + scrollY) < 100 &&
+          !this.state.isDone
+        ) {
+          if (this.state.throttleCheck) {
+            this.updateList();
+            this.setState({
+              throttleCheck: 0
+            });
+          }
+        }
+      }, 500)
+    });
   };
 
   updateList = () => {
@@ -82,6 +95,7 @@ export default class SearchBar extends Component {
     searchCountry(ev.target.value);
     console.log("pppp", this.props);
 
+    // debouncing
     if (this.state.timerID) {
       this.setState({
         timerID: clearTimeout(this.state.timerID)
@@ -91,7 +105,7 @@ export default class SearchBar extends Component {
     this.setState({
       timerID: setTimeout(() => {
         this.getCountryLists();
-      }, 500)
+      }, 1000)
     });
   };
 
