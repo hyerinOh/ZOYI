@@ -8,9 +8,13 @@
 
 ```
 git clone https://github.com/hyerinOh/ZOYI.git
+
 cd ZOYI
+
 npm install
+
 npm run client
+
 ```
 
 ## Features
