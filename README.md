@@ -4,17 +4,6 @@
 
 ## Installation
 
-```
-git clone https://github.com/hyerinOh/ZOYI.git
-
-cd ZOYI
-
-npm install
-
-npm run client
-
-```
-
 ## Features
 
 - react, webpack을 베이스로 사용하여 개발하였습니다.
